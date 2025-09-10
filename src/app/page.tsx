@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
+
 export default function Home() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", hearAbout: "", message: "" });
   const [statusMessage, setStatusMessage] = useState("");
@@ -44,15 +46,16 @@ export default function Home() {
   const scrollToContact = () =>
     document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
 
-  const irrigationImage =
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&w=1200&q=80";
+  // Replace these URLs with your Hawaiian images
+  const heroImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&w=1200&q=80"; // Hawaiian shore
+  const aboutImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&w=1200&q=80"; // Hawaiian landscape
 
   return (
     <div className="min-h-screen font-sans text-gray-800 bg-gray-50">
       {/* Hero Section */}
       <section className="relative text-center py-32 px-6 bg-gradient-to-r from-green-700 via-teal-500 to-green-600 text-white overflow-hidden">
         <motion.div className="absolute top-0 left-0 w-full h-full opacity-40">
-          <img src={irrigationImage} alt="Lawn sprinklers with palm trees" className="w-full h-full object-cover" />
+          <Image src={heroImage} alt="Hawaiian shore" fill style={{ objectFit: "cover" }} />
         </motion.div>
         <motion.h1
           className="relative text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-2xl"
@@ -81,16 +84,19 @@ export default function Home() {
           <p className="text-lg md:text-xl leading-relaxed text-gray-700">
             At Aloha Service HI, we specialize in <strong className="text-teal-700">irrigation solutions</strong> and{" "}
             <strong className="text-emerald-700">landscape cleanups</strong> across the west side of the Big Island. With
-            decades of experience, our mission is to keep your outdoor spaces thriving and beautiful, while also offering
-            reliable yard maintenance services tailored to your property.
+            decades of experience, our mission is to &quot;keep your outdoor spaces thriving and beautiful,&quot; while
+            also offering reliable yard maintenance services tailored to your property.
           </p>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-green-300">
-            <img
-              src={irrigationImage}
-              alt="Close-up of Hawaiian landscaping"
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+            <Image
+              src={aboutImage}
+              alt="Hawaiian landscape"
+              width={1200}
+              height={800}
+              style={{ objectFit: "cover" }}
+              className="transform hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
           </div>
@@ -123,9 +129,12 @@ export default function Home() {
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-14 text-green-900">What Our Clients Say</h2>
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
           {dummyReviews.map((r, i) => (
-            <Card key={i} className="rounded-3xl shadow-2xl bg-white p-10 border-l-4 border-green-400 hover:scale-105 hover:shadow-3xl transition-transform">
+            <Card
+              key={i}
+              className="rounded-3xl shadow-2xl bg-white p-10 border-l-4 border-green-400 hover:scale-105 hover:shadow-3xl transition-transform"
+            >
               <CardContent>
-                <p className="italic text-gray-800 text-lg md:text-xl leading-relaxed">"{r.review}"</p>
+                <p className="italic text-gray-800 text-lg md:text-xl leading-relaxed">&quot;{r.review}&quot;</p>
                 <p className="mt-6 font-semibold text-right text-teal-700">- {r.name}</p>
               </CardContent>
             </Card>
@@ -137,46 +146,11 @@ export default function Home() {
       <section id="contact-section" className="py-24 px-6 bg-gradient-to-b from-green-50 via-blue-50 to-green-100">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-green-900">Get in Touch</h2>
         <form className="max-w-2xl mx-auto grid gap-6" onSubmit={handleSubmit}>
-          <Input
-            name="name"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            className="rounded-full px-6 py-4"
-          />
-          <Input
-            name="email"
-            type="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            className="rounded-full px-6 py-4"
-          />
-          <Input
-            name="phone"
-            type="tel"
-            placeholder="Phone Number"
-            value={form.phone}
-            onChange={handleChange}
-            className="rounded-full px-6 py-4"
-          />
-          <Input
-            name="hearAbout"
-            placeholder="How did you hear about us?"
-            value={form.hearAbout}
-            onChange={handleChange}
-            className="rounded-full px-6 py-4"
-          />
-          <Textarea
-            name="message"
-            placeholder="Your Message"
-            value={form.message}
-            onChange={handleChange}
-            required
-            className="rounded-2xl px-6 py-4"
-          />
+          <Input name="name" placeholder="Your Name" value={form.name} onChange={handleChange} required className="rounded-full px-6 py-4" />
+          <Input name="email" type="email" placeholder="Your Email" value={form.email} onChange={handleChange} required className="rounded-full px-6 py-4" />
+          <Input name="phone" type="tel" placeholder="Phone Number" value={form.phone} onChange={handleChange} className="rounded-full px-6 py-4" />
+          <Input name="hearAbout" placeholder="How did you hear about us?" value={form.hearAbout} onChange={handleChange} className="rounded-full px-6 py-4" />
+          <Textarea name="message" placeholder="Your Message" value={form.message} onChange={handleChange} required className="rounded-2xl px-6 py-4" />
           <Button type="submit" className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold rounded-full px-10 py-5">
             Send Message
           </Button>
