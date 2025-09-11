@@ -38,9 +38,9 @@ export default function Home() {
   };
 
   const dummyReviews = [
-    { name: "Lani K.", review: "Amazing irrigation work! Highly recommend Aloha Service HI." },
-    { name: "Kai M.", review: "Our yard has never looked better. Excellent cleanup service." },
-    { name: "Leilani P.", review: "Professional, punctual, and very thorough. Will use again." },
+    { name: "Gloria T.", review: "Amazing irrigation work! Highly recommend Aloha Service HI." },
+    { name: "Alice J.", review: "Our yard has never looked better. Excellent cleanup service." },
+    { name: "David R.", review: "Professional, punctual, and very thorough. Will use again." },
   ];
 
   const scrollToContact = () =>
@@ -48,7 +48,7 @@ export default function Home() {
 
   // Replace these URLs with your Hawaiian images
   const heroImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&w=1200&q=80"; // Hawaiian shore
-  const aboutImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&w=1200&q=80"; // Hawaiian landscape
+  const aboutImage = "https://waikoloabeachvillas.com/wp-content/uploads/2019/02/w.b.v.J4_GC-Yard-1.jpg?resolution=1536,1.25"; // Hawaiian landscape
 
   return (
     <div className="min-h-screen font-sans text-gray-800 bg-gray-50">
